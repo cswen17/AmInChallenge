@@ -1,0 +1,6 @@
+package entryInfoType;
+
+
+public class Country extends EntryInfo {
+	
+}

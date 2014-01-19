@@ -1,0 +1,16 @@
+package entryInfoType;
+
+/**
+ * An Entry Info class that records which method of torture was used on the
+ * victim(s). The database column is prefixed with TortureIncident just in case
+ * the database is merged with other databases.
+ * 
+ * @author connie
+ * 
+ */
+public class Method extends EntryInfo {
+	public Method(String method) {
+		super.columnName = "TortureIncidentMethod";
+		super.value = method;
+	}
+}

@@ -1,0 +1,23 @@
+package core;
+
+import java.io.File;
+
+public class EntryBuilder {
+
+	/**
+	 * Extracts relevant data from a large text file that pertains to torture,
+	 * hopefully within <Torture></Torture>-like sections.
+	 * 
+	 * @param textFile
+	 *            A .txt file that will hopefully contain data about torture
+	 *            incidences.
+	 * @return A String containing all entries related to torture
+	 */
+	public String extractData(File textFile) {
+		return null;
+	}
+	
+	public EntryInfo findCountry(String corpus) {
+		return null;
+	}
+}

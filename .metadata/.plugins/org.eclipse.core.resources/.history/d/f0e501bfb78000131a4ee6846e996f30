@@ -1,0 +1,7 @@
+package entryInfoType;
+
+import core.EntryInfo;
+
+public class Country extends EntryInfo {
+	
+}

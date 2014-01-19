@@ -1,0 +1,17 @@
+package core;
+
+import java.io.File;
+import Abbyy.Ocrsdk.client.*;
+
+/**
+ * Submits a pdf to ABBYY for OCR if the pdf only contains images. Otherwise, we
+ * could just extract the pdf text directly.
+ * 
+ * @author connie
+ * 
+ */
+public class AbbyyClient {
+	public void submitFile(File pdfFile) {
+		TestApp.performRecognition(null);
+	}
+}
