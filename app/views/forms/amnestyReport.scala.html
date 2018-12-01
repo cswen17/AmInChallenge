@@ -1,0 +1,20 @@
+@import helper._
+@()(implicit request: RequestHeader) 
+<div class="base-frame">
+    <h2 class="hero-heading">
+        Upload a New Amnesty Report
+    </h2>
+
+    <!--    <form action="/amnesty-report/create" method="post" class="hero-form"> -->
+    @form(CSRF(routes.AmnestyReportController.create())) {
+        <input type="hidden" name="reportId" value="0"/>
+        <label>Text:</label>
+        <textarea type="text" id="amnesty-report-text" name="text"></textarea>
+
+        <input type="checkbox" id="amnesty-report-is-public" name="isPublic">
+            Make this report publicly browsable
+        </input>
+
+        <button>Submit</button>
+    }
+</div>

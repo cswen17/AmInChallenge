@@ -1,0 +1,29 @@
+@import slick.jdbc.H2Profile.api._
+@import models.AmnestyReport
+
+@(amnestyReports : Seq[AmnestyReport])
+<a href="/amnesty-report">Create a Report</a>
+<table>
+    <th>
+         <tr>
+             <td>Report ID</td>
+             <td>Is Public</td>
+             <td>Text</td>
+         </tr>
+    </th>
+    <tbody>
+        @amnestyReports.map{report=>
+            <tr>
+                <td>
+                    @report.reportId
+                </td>
+                <td>
+                    @report.isPublic
+                </td>
+                <td>
+                    @report.text
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

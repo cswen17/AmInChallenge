@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/controllers/AmnestyReportController.scala:91:97: not found: value reportId[0m
+[0m[[0m[31merror[0m] [0m[0m        val insertedSeq : Seq[AmnestyReport] = Await.result(db.run(amnestyReports.filter(_.id===reportId).result), Duration.Inf)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                                                ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

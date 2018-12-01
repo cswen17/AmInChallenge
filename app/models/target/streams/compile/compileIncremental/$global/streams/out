@@ -1,0 +1,182 @@
+[debug] [naha] 
+[debug] [naha] Initial source changes: 
+[debug] [naha] 	removed:Set()
+[debug] [naha] 	added: Set(/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala, /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Models.scala)
+[debug] [naha] 	modified: Set()
+[debug] [naha] Invalidated products: Set()
+[debug] [naha] External API changes: API Changes: Set()
+[debug] [naha] Modified binary dependencies: Set()
+[debug] [naha] Initial directly invalidated sources: Set(/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala, /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Models.scala)
+[debug] [naha] 
+[debug] [naha] Sources indirectly invalidated by:
+[debug] [naha] 	product: Set()
+[debug] [naha] 	binary dep: Set()
+[debug] [naha] 	external source: Set()
+[debug] All initially invalidated sources: Set(/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala, /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Models.scala)
+[debug] [naha] Initial set of included nodes: Set(/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala, /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Models.scala)
+[debug] [naha] Recompiling all 2 sources: invalidated sources (2) exceeded 50.0% of all sources
+[info] Compiling 2 Scala sources to /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/target/scala-2.10/classes...
+[debug] Getting org.scala-sbt:compiler-interface:0.13.15:component from component compiler for Scala 2.10.6
+[debug] Getting org.scala-sbt:compiler-interface:0.13.15:component from component compiler for Scala 2.10.6
+[debug] Running cached compiler 56b3424d, interfacing (CompilerInterface) with Scala compiler version 2.10.6
+[debug] Calling Scala compiler with arguments  (CompilerInterface):
+[debug] 	-bootclasspath
+[debug] 	/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/classes:/Users/cwen/.sbt/boot/scala-2.10.6/lib/scala-library.jar
+[debug] 	-classpath
+[debug] 	/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/target/scala-2.10/classes
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:10: not found: object slick
+[error] import slick.jdbc.H2Profile.api._
+[error]        ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:14: not found: type Table
+[error]   class InputRule(tag: Tag) extends Table[(Int, String, String, Int, String)](tag, "INPUT_RULE") {
+[error]                                     ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:14: not found: type Tag
+[error]   class InputRule(tag: Tag) extends Table[(Int, String, String, Int, String)](tag, "INPUT_RULE") {
+[error]                        ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:14: too many arguments for constructor Object: ()Object
+[error]   class InputRule(tag: Tag) extends Table[(Int, String, String, Int, String)](tag, "INPUT_RULE") {
+[error]                  ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:15: not found: value column
+[error]     def id = column[Int]("IR_ID", O.PrimaryKey)
+[error]              ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:16: not found: value column
+[error]     def inputRuleType = column[String]("TYPE")
+[error]                         ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:17: not found: value column
+[error]     def regex = column[String]("REGEX")
+[error]                 ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:18: not found: value column
+[error]     def wordDistance = column[Int]("WORD_DISTANCE")
+[error]                        ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:19: not found: value column
+[error]     def aggregationRule = column[String]("AGG_RULE")
+[error]                           ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:21: not found: value column
+[error]     def irrID = column[Int]("IRR_FK_ID")
+[error]                 ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:25: not found: value TableQuery
+[error]   val inputRules = TableQuery[InputRule]
+[error]                    ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:27: not found: type Table
+[error]   class OutputCorpus(tag: Tag) extends Table[(Int, Boolean)](tag, "OUTPUT_CORPUS") {
+[error]                                        ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:27: not found: type Tag
+[error]   class OutputCorpus(tag: Tag) extends Table[(Int, Boolean)](tag, "OUTPUT_CORPUS") {
+[error]                           ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:27: too many arguments for constructor Object: ()Object
+[error]   class OutputCorpus(tag: Tag) extends Table[(Int, Boolean)](tag, "OUTPUT_CORPUS") {
+[error]                     ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:28: not found: value column
+[error]     def id = column[Int]("OC_ID", O.PrimaryKey)
+[error]              ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:29: not found: value column
+[error]     def isPublic = column[Boolean]("IS_PUBLIC")
+[error]                    ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:33: not found: value TableQuery
+[error]   val outputCorpi = TableQuery[OutputCorpus]
+[error]                     ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:42: not found: type Table
+[error]   class InputRuleRelation(tag: Tag) extends Table[(Int, Int, Int, Int)](tag, "INPUT_RULE_RELATION") {
+[error]                                             ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:42: not found: type Tag
+[error]   class InputRuleRelation(tag: Tag) extends Table[(Int, Int, Int, Int)](tag, "INPUT_RULE_RELATION") {
+[error]                                ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:42: too many arguments for constructor Object: ()Object
+[error]   class InputRuleRelation(tag: Tag) extends Table[(Int, Int, Int, Int)](tag, "INPUT_RULE_RELATION") {
+[error]                          ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:43: not found: value column
+[error]     def id = column[Int]("IRR_ID", O.PrimaryKey)
+[error]              ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:46: not found: value column
+[error]     def leftID = column[Int]("IR_FK_ID_LEFT")
+[error]                  ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:47: not found: value foreignKey
+[error]     def left = foreignKey("IR_FK_LEFT", leftID, inputRules)(_.id) 
+[error]                ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:48: not found: value column
+[error]     def rightID = column[Int]("IR_FK_ID_RIGHT")
+[error]                   ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:49: not found: value foreignKey
+[error]     def right = foreignKey("IR_FK_RIGHT", rightID, inputRules)(_.id)
+[error]                 ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:52: not found: value column
+[error]     def outputCorpusID = column[Int]("OC_FK_ID")
+[error]                          ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:53: not found: value foreignKey
+[error]     def outputCorpus = foreignKey("OC_FK", outputCorpusID, outputCorpi)(_.id)
+[error]                        ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:57: not found: value TableQuery
+[error]   val inputRuleRelations = TableQuery[InputRuleRelation]
+[error]                            ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:59: not found: type Table
+[error]   class ClassifiedOutputSchemaRelation(tag: Tag) extends Table[(Int, String, String, Int)](tag, "CLASSIFIED_OUTPUT_SCHEMA_RELATION") {
+[error]                                                          ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:59: not found: type Tag
+[error]   class ClassifiedOutputSchemaRelation(tag: Tag) extends Table[(Int, String, String, Int)](tag, "CLASSIFIED_OUTPUT_SCHEMA_RELATION") {
+[error]                                             ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:59: too many arguments for constructor Object: ()Object
+[error]   class ClassifiedOutputSchemaRelation(tag: Tag) extends Table[(Int, String, String, Int)](tag, "CLASSIFIED_OUTPUT_SCHEMA_RELATION") {
+[error]                                       ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:60: not found: value column
+[error]     def id = column[Int]("COSR_ID", O.PrimaryKey)
+[error]              ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:61: not found: value column
+[error]     def details = column[String]("DETAILS")
+[error]                   ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:62: not found: value column
+[error]     def text = column[String]("TEXT")
+[error]                ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:63: not found: value column
+[error]     def outputCorpusID = column[Int]("OC_ID")
+[error]                          ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:65: not found: value foreignKey
+[error]     def ocID = foreignKey("OC_FK", outputCorpusID, outputCorpi)(_.id)
+[error]                ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:69: not found: value TableQuery
+[error]   val classifiedOutputSchemaRelations = TableQuery[ClassifiedOutputSchemaRelation] 
+[error]                                         ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:71: not found: type Table
+[error]   class AmnestyReportTable(tag: Tag) extends Table[AmnestyReport](tag, "AMNESTY_REPORT") {
+[error]                                              ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:71: not found: type Tag
+[error]   class AmnestyReportTable(tag: Tag) extends Table[AmnestyReport](tag, "AMNESTY_REPORT") {
+[error]                                 ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:71: too many arguments for constructor Object: ()Object
+[error]   class AmnestyReportTable(tag: Tag) extends Table[AmnestyReport](tag, "AMNESTY_REPORT") {
+[error]                           ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:72: not found: value column
+[error]     def id = column[Int]("AR_ID", O.PrimaryKey)
+[error]              ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:73: not found: value column
+[error]     def isPublic = column[Int]("IS_PUBLIC")
+[error]                    ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:74: not found: value column
+[error]     def text = column[String]("TEXT")
+[error]                ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:78: not found: value TableQuery
+[error]   val amnestyReports = TableQuery[AmnestyReportTable]
+[error]                        ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:80: not found: type Table
+[error]   class User(tag: Tag) extends Table[(Int, String, String)](tag, "USER") {
+[error]                                ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:80: not found: type Tag
+[error]   class User(tag: Tag) extends Table[(Int, String, String)](tag, "USER") {
+[error]                   ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:80: too many arguments for constructor Object: ()Object
+[error]   class User(tag: Tag) extends Table[(Int, String, String)](tag, "USER") {
+[error]             ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:81: not found: value column
+[error]     def id = column[Int]("USER_ID", O.PrimaryKey)
+[error]              ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:82: not found: value column
+[error]     def username = column[String]("USERNAME")
+[error]                    ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:83: not found: value column
+[error]     def password = column[String]("PASSWORD")
+[error]                    ^
+[error] /Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/app/models/Schemas.scala:87: not found: value TableQuery
+[error]   val users = TableQuery[User]
+[error]               ^
+[error] 51 errors found
+[debug] Compilation failed (CompilerInterface)
+[error] (compile:compileIncremental) Compilation failed
