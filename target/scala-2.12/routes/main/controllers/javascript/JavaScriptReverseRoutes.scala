@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/conf/routes
-// @DATE:Fri Nov 30 12:20:17 EST 2018
+// @SOURCE:/Users/cwen/employment/personalProjects/AmInChallenge/conf/routes
+// @DATE:Sat Dec 01 17:32:33 EST 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
