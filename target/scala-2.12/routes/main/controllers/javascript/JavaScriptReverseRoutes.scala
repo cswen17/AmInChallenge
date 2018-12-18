@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/conf/routes
-// @DATE:Fri Nov 30 12:20:17 EST 2018
+// @SOURCE:/Users/cwen/employment/personalProjects/AmInChallenge/conf/routes
+// @DATE:Tue Dec 18 10:12:39 EST 2018
 
 import play.api.routing.JavaScriptReverseRoute
 
@@ -30,7 +30,7 @@ package controllers.javascript {
   
   }
 
-  // @LINE:22
+  // @LINE:25
   class ReverseAssets(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -38,7 +38,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:22
+    // @LINE:25
     def versioned: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.Assets.versioned",
       """
@@ -50,7 +50,67 @@ package controllers.javascript {
   
   }
 
-  // @LINE:13
+  // @LINE:10
+  class ReverseInputRuleController(_prefix: => String) {
+
+    def _defaultPrefix: String = {
+      if (_prefix.endsWith("/")) "" else "/"
+    }
+
+  
+    // @LINE:10
+    def show: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.InputRuleController.show",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "input-rule/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:14
+    def createTable: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.InputRuleController.createTable",
+      """
+        function(id0) {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "input-rule/createTable/" + encodeURIComponent((""" + implicitly[play.api.mvc.PathBindable[Int]].javascriptUnbind + """)("id", id0))})
+        }
+      """
+    )
+  
+    // @LINE:11
+    def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.InputRuleController.create",
+      """
+        function() {
+          return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "input-rule/create"})
+        }
+      """
+    )
+  
+    // @LINE:12
+    def form: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.InputRuleController.form",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "input-rule"})
+        }
+      """
+    )
+  
+    // @LINE:13
+    def list: JavaScriptReverseRoute = JavaScriptReverseRoute(
+      "controllers.InputRuleController.list",
+      """
+        function() {
+          return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "input-rules"})
+        }
+      """
+    )
+  
+  }
+
+  // @LINE:16
   class ReverseAmnestyReportController(_prefix: => String) {
 
     def _defaultPrefix: String = {
@@ -58,7 +118,7 @@ package controllers.javascript {
     }
 
   
-    // @LINE:13
+    // @LINE:16
     def show: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AmnestyReportController.show",
       """
@@ -68,7 +128,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:16
+    // @LINE:19
     def list: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AmnestyReportController.list",
       """
@@ -78,7 +138,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:14
+    // @LINE:17
     def create: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AmnestyReportController.create",
       """
@@ -88,7 +148,7 @@ package controllers.javascript {
       """
     )
   
-    // @LINE:15
+    // @LINE:18
     def form: JavaScriptReverseRoute = JavaScriptReverseRoute(
       "controllers.AmnestyReportController.form",
       """

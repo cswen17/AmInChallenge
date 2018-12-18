@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
-// @SOURCE:/Users/cwen/cwen/scala_projects/AmInChallenge/experiment/am-in-challenge/conf/routes
-// @DATE:Fri Nov 30 12:20:17 EST 2018
+// @SOURCE:/Users/cwen/employment/personalProjects/AmInChallenge/conf/routes
+// @DATE:Tue Dec 18 10:12:39 EST 2018
 
 
 package router {

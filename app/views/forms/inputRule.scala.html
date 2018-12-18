@@ -1,0 +1,28 @@
+@import helper._
+@()(implicit request: RequestHeader) 
+<div class="base-frame">
+    <h2 class="hero-heading">
+        Create a New Input Rule
+    </h2>
+
+    <!--    <form action="/amnesty-report/create" method="post" class="hero-form"> -->
+    @form(CSRF(routes.InputRuleController.create())) {
+        <input type="hidden" name="id" value="0"/>
+        <label>Input Rule Type (Regex, Word Distance, Aggregate):</label>
+        <input type="input" id="input-rule-type" name="inputRuleType" />
+
+        <label>If Regex, Pattern (leave blank if not regex):</label>
+        <input type="input" id="input-rule-regex" name="regex" />
+
+        <label>If Word Distance, Max Number of Words Allowed between Targets</label>
+        <input type="input" id="input-rule-word-distance" name="wordDistance" />
+
+        <label>If Aggregated, Name of Current Aggregated Rule</label>
+        <input type="input" id="input-rule-aggregate" name="aggregationRule" />
+
+        <label>If Aggregated, Id of Input Rule Relation to Aggregate with</label>
+        <input type="input" id="input-rule-irr-id" name="irrID" />
+
+        <button>Submit</button>
+    }
+</div>
