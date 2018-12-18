@@ -1,6 +1,6 @@
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/Users/cwen/employment/personalProjects/AmInChallenge/conf/routes
-// @DATE:Sat Dec 01 17:32:33 EST 2018
+// @DATE:Tue Dec 18 10:12:39 EST 2018
 
 
 package router {

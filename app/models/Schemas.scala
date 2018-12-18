@@ -11,18 +11,18 @@ import slick.jdbc.H2Profile.api._
 
 
 object Schemas extends App {
-  class InputRule(tag: Tag) extends Table[(Int, String, String, Int, String)](tag, "INPUT_RULE") {
+  class InputRuleTable(tag: Tag) extends Table[InputRule](tag, "INPUT_RULE") {
     def id = column[Int]("IR_ID", O.PrimaryKey)
     def inputRuleType = column[String]("TYPE")
-    def regex = column[String]("REGEX")
-    def wordDistance = column[Int]("WORD_DISTANCE")
-    def aggregationRule = column[String]("AGG_RULE")
+    def regex = column[Option[String]]("REGEX")
+    def wordDistance = column[Option[Int]]("WORD_DISTANCE")
+    def aggregationRule = column[Option[String]]("AGG_RULE")
 
-    def irrID = column[Int]("IRR_FK_ID")
+    def irrID = column[Option[Int]]("IRR_FK_ID")
 
-    def * = (id, inputRuleType, regex, wordDistance, aggregationRule)
+    def * = (id, inputRuleType, regex, wordDistance, aggregationRule, irrID) <> (InputRule.tupled, InputRule.unapply)
   }
-  val inputRules = TableQuery[InputRule]
+  val inputRules = TableQuery[InputRuleTable]
 
   class OutputCorpus(tag: Tag) extends Table[(Int, Boolean)](tag, "OUTPUT_CORPUS") {
     def id = column[Int]("OC_ID", O.PrimaryKey)

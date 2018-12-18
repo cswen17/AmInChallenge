@@ -1,0 +1,39 @@
+@import slick.jdbc.H2Profile.api._
+@import models.InputRule
+
+@(inputRules : Seq[InputRule])
+<a href="/input-rule">Create an Input Rule</a>
+<table border="1">
+         <tr>
+             <td>Input Rule ID</td>
+             <td>Input Rule Type</td>
+             <td>Regex</td>
+             <td>Word Distance</td>
+             <td>Aggregation Name</td>
+             <td>If Aggregation, Relation ID</td>
+         </tr>
+    <tbody>
+        @inputRules.map{inputRule=>
+            <tr>
+                <td>
+                    @inputRule.id
+                </td>
+                <td>
+                    @inputRule.inputRuleType
+                </td>
+                <td>
+                    @inputRule.regex.getOrElse("")
+                </td>
+                <td>
+                    @inputRule.wordDistance.getOrElse(0)
+                </td>
+                <td>
+                    @inputRule.aggregationRule.getOrElse("")
+                </td>
+                <td>
+                    @inputRule.irrID.getOrElse(0)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

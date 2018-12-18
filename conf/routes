@@ -7,8 +7,11 @@
 GET     /                           controllers.HomeController.index
 
 # App Controllers
-#GET     /input-rule/:id             controllers.InputRuleController.show(id: Int)
-#POST    /input-rule                 controllers.InputRuleController.create
+GET     /input-rule/:id             controllers.InputRuleController.show(id: Int)
+POST    /input-rule/create          controllers.InputRuleController.create
+GET     /input-rule                 controllers.InputRuleController.form
+GET     /input-rules                controllers.InputRuleController.list
+GET     /input-rule/createTable/:id controllers.InputRuleController.createTable(id: Int)
 
 GET     /amnesty-report/:id         controllers.AmnestyReportController.show(id: Int)
 POST    /amnesty-report/create      controllers.AmnestyReportController.create
