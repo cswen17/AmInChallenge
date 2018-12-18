@@ -2,4 +2,7 @@
 *.swp
 project/*
 target/*
-logs/*
+logs
+
+!project/.gitkeep
+!target/.gitkeep
