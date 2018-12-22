@@ -12,6 +12,8 @@ POST    /input-rule/create          controllers.InputRuleController.create
 GET     /input-rule                 controllers.InputRuleController.form
 GET     /input-rules                controllers.InputRuleController.list
 GET     /input-rule/createTable/:id controllers.InputRuleController.createTable(id: Int)
+POST    /input-rule-relation/create controllers.InputRuleController.createInputRuleRelation
+GET     /input-rule-relation        controllers.InputRuleController.formInputRuleRelation
 
 GET     /amnesty-report/:id         controllers.AmnestyReportController.show(id: Int)
 POST    /amnesty-report/create      controllers.AmnestyReportController.create

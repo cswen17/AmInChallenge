@@ -1,0 +1,37 @@
+@import helper._
+@import models.Utils._
+@(inputRuleRelationForm: Form[_], optionsSequencer: () => Seq[(String, String)])(implicit request : MessagesRequestHeader)
+<div>
+    @helper.form(action = routes.InputRuleController.createInputRuleRelation()) {
+      <h3>Create an Input Rule Relation</h3>
+      @CSRF.formField    @* <- takes a RequestHeader *@
+      <input type="hidden" name="id" value="0"/>
+      @helper.select(
+        field = inputRuleRelationForm("leftID"),
+        options = optionsSequencer(),
+        '_default -> "Choose One",
+        '_disabled -> Seq("Test"),
+        'class -> "ar-select"
+      )
+      @helper.select(
+        field = inputRuleRelationForm("rightID"),
+        options = optionsSequencer(),
+        '_default -> "Choose One",
+        'class -> "ar-select"
+      )
+      <hr />
+      <label>(Optional)</label>
+      @helper.select(
+        field = inputRuleRelationForm("outputCorpusID"),
+        options = Seq(
+          "1" -> "1",
+          "2" -> "2",
+          "3" -> "3"
+        ),
+        '_default -> "Choose One",
+        'class -> "ar-select"
+      )
+      <button>Submit</button>
+    }
+
+</div>

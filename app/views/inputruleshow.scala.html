@@ -1,6 +1,6 @@
-@(id: Int, inputRuleType: String, regex: Option[String], wordDistance: Option[Int], aggregationRule: Option[String], irrID: Option[Int])
+@(id: Int, inputRuleType: String, regex: Option[String], wordDistance: Option[Int], ruleName: String, irrID: Option[Int])
 <h3>Type: @inputRuleType</h3>
 <h5>Regex? @regex</h5>
 <h5>Word Distance? @wordDistance</h5>
-<h5>Aggregation Rule? @aggregationRule</h5>
-<h5>If Aggregation Rule, Related Rule Relation ID: @irrID</h5>
+<h5>Rule Name @ruleName</h5>
+<h5>If Aggregated Rule, Related Rule Relation ID: @irrID</h5>
