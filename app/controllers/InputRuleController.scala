@@ -15,12 +15,14 @@ import org.h2.jdbc.JdbcSQLException
 import slick.jdbc.H2Profile.api._
 import slick.jdbc.JdbcProfile
 
-import models.InputRule
-import models.Schemas.InputRuleTable
+import models._
+import models.Schemas.{InputRuleTable, InputRuleRelationTable}
+import models.Utils._
 
 class InputRuleController @Inject() (
-  @NamedDatabase("h2mem1") protected val dbConfigProvider: DatabaseConfigProvider, cc: ControllerComponents)(implicit exec: ExecutionContext) extends AbstractController(cc) with HasDatabaseConfigProvider[JdbcProfile]{
+  @NamedDatabase("h2mem1") protected val dbConfigProvider: DatabaseConfigProvider, messagesAction: MessagesActionBuilder, cc: ControllerComponents)(implicit exec: ExecutionContext) extends AbstractController(cc) with HasDatabaseConfigProvider[JdbcProfile]{
     var inputRuleID: AtomicInteger = new AtomicInteger(1)
+    var inputRuleRelationID: AtomicInteger = new AtomicInteger(1)
 
     def show(id: Int) = Action {
       val inputRules = TableQuery[InputRuleTable]
@@ -30,9 +32,9 @@ class InputRuleController @Inject() (
       val inputRuleType = inputRule.inputRuleType
       val regex = inputRule.regex
       val wordDistance = inputRule.wordDistance
-      val aggregationRule = inputRule.aggregationRule
+      val ruleName = inputRule.ruleName
       val irrID = inputRule.irrID
-      Ok(views.html.inputruleshow(inputRuleId, inputRuleType, regex, wordDistance, aggregationRule, irrID))
+      Ok(views.html.inputruleshow(inputRuleId, inputRuleType, regex, wordDistance, ruleName, irrID))
     }
 
     def createTable(id: Int) = Action {
@@ -49,7 +51,6 @@ class InputRuleController @Inject() (
           Ok("Created")
         }
         case other: Exception => Ok("Caught Exception: " + other)
-        case _ => Ok("Unknown case match")
       }
     }
 
@@ -59,15 +60,15 @@ class InputRuleController @Inject() (
         "inputRuleType" -> text(),
         "regex" -> optional(text()),
         "wordDistance" -> optional(number()),
-        "aggregationRule" -> optional(text()),
+        "ruleName" -> text(),
         "irrID" -> optional(number()),
         )(inputRuleFormApply)(InputRule.unapply)
     )
 
     private def incInputRuleID() : Int = inputRuleID.getAndIncrement
 
-    def inputRuleFormApply(_id: Int, _inputRuleType: String, _regex: Option[String], _wordDistance: Option[Int], _aggregationRule: Option[String], _irrID: Option[Int]) : InputRule = {
-      InputRule(incInputRuleID(), _inputRuleType, _regex, _wordDistance, _aggregationRule, _irrID)
+    def inputRuleFormApply(_id: Int, _inputRuleType: String, _regex: Option[String], _wordDistance: Option[Int], _ruleName: String, _irrID: Option[Int]) : InputRule = {
+      InputRule(incInputRuleID(), _inputRuleType, _regex, _wordDistance, _ruleName, _irrID)
     }
 
 
@@ -87,5 +88,42 @@ class InputRuleController @Inject() (
       val inputRules = TableQuery[InputRuleTable]
       val inputRulesSeq = Await.result(db.run(inputRules.result), Duration.Inf)
       Ok(views.html.inputrulelist(inputRulesSeq))
+    }
+
+
+    // InputRuleRelation
+    var inputRuleRelationForm = Form(
+      mapping(
+        "id" -> number(),
+        "leftID" -> number(),
+        "rightID" -> number(),
+        "outputCorpusID" -> optional(number())
+      )(inputRuleRelationFormApply)(InputRuleRelation.unapply)
+    )
+
+    private def incInputRuleRelationID(): Int = inputRuleRelationID.getAndIncrement
+
+    def inputRuleRelationFormApply(_id: Int, _leftID: Int, _rightID: Int, _outputCorpusID: Option[Int]) : InputRuleRelation = {
+      InputRuleRelation(incInputRuleRelationID(), _leftID, _rightID, _outputCorpusID)
+    }
+
+    def formInputRuleRelation = messagesAction { implicit messagesRequest : MessagesRequest[AnyContent] =>
+      val util : Util = new Util(dbConfigProvider)
+      Ok(views.html.forms.inputRuleRelation(inputRuleRelationForm, util.inputRulesToSelectOptions))
+    }
+
+    def createInputRuleRelation = Action { implicit request =>
+      val inputRuleRelations = TableQuery[InputRuleRelationTable]
+      // Fold this and account for errors
+      inputRuleRelationForm.bindFromRequest.fold (
+        formWithErrors => {
+          BadRequest(formWithErrors.toString)
+        },
+        toInsert => {
+          //var toInsert : InputRuleRelation = formData.get
+          db.run(inputRuleRelations += toInsert).map {_ => ()}
+          Redirect("/input-rules")
+        }
+      )
     }
 }

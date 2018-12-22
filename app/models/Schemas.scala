@@ -16,11 +16,11 @@ object Schemas extends App {
     def inputRuleType = column[String]("TYPE")
     def regex = column[Option[String]]("REGEX")
     def wordDistance = column[Option[Int]]("WORD_DISTANCE")
-    def aggregationRule = column[Option[String]]("AGG_RULE")
+    def ruleName = column[String]("RULE_NAME")
 
     def irrID = column[Option[Int]]("IRR_FK_ID")
 
-    def * = (id, inputRuleType, regex, wordDistance, aggregationRule, irrID) <> (InputRule.tupled, InputRule.unapply)
+    def * = (id, inputRuleType, regex, wordDistance, ruleName, irrID) <> (InputRule.tupled, InputRule.unapply)
   }
   val inputRules = TableQuery[InputRuleTable]
 
@@ -39,7 +39,7 @@ object Schemas extends App {
   // right IDs in ascending order so that we can always
   // guarantee that the lesser ID gets selected on
   // the left... we'll see how far that takes us.
-  class InputRuleRelation(tag: Tag) extends Table[(Int, Int, Int, Int)](tag, "INPUT_RULE_RELATION") {
+  class InputRuleRelationTable(tag: Tag) extends Table[InputRuleRelation](tag, "INPUT_RULE_RELATION") {
     def id = column[Int]("IRR_ID", O.PrimaryKey)
 
     // InputRules Relations
@@ -49,12 +49,12 @@ object Schemas extends App {
     def right = foreignKey("IR_FK_RIGHT", rightID, inputRules)(_.id)
 
     // OutputCorpus Relations
-    def outputCorpusID = column[Int]("OC_FK_ID")
+    def outputCorpusID = column[Option[Int]]("OC_FK_ID")
     def outputCorpus = foreignKey("OC_FK", outputCorpusID, outputCorpi)(_.id)
 
-    def * = (id, leftID, rightID, outputCorpusID)
+    def * = (id, leftID, rightID, outputCorpusID) <> (InputRuleRelation.tupled, InputRuleRelation.unapply)
   }
-  val inputRuleRelations = TableQuery[InputRuleRelation]
+  val inputRuleRelations = TableQuery[InputRuleRelationTable]
 
   class ClassifiedOutputSchemaRelation(tag: Tag) extends Table[(Int, String, String, Int)](tag, "CLASSIFIED_OUTPUT_SCHEMA_RELATION") {
     def id = column[Int]("COSR_ID", O.PrimaryKey)

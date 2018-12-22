@@ -1,8 +1,10 @@
 .DS_STORE
 *.swp
+app/target/*
 project/*
 target/*
 logs
 
 !project/.gitkeep
 !target/.gitkeep
+!app/target/.gitkeep
