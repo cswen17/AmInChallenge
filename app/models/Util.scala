@@ -16,7 +16,6 @@ import models.Schemas._
 
 object Utils {
   class Util @Inject()(protected val dbConfigProvider: DatabaseConfigProvider) extends HasDatabaseConfigProvider[JdbcProfile]{
-    //val dbConn = dbConfigProvider.db // Database.forConfig("h2mem1")
 
     def inputRulesToSelectOptions(): Seq[(String, String)] = { 
       val inputRules = TableQuery[InputRuleTable]
@@ -29,6 +28,33 @@ object Utils {
         }
       }
       inputRuleOptions
+    }
+
+    def inputRuleRelationsToSelectOptions(): Seq[(String, String)] = {
+      val inputRules = TableQuery[InputRuleTable]
+      val inputRuleRelations = TableQuery[InputRuleRelationTable]
+      val inputRuleRelationsSeq: Seq[InputRuleRelation] = Await.result(db.run(inputRuleRelations.result), Duration.Inf)
+      val inputRuleRelationOptions : Seq[(String, String)] = {
+        inputRuleRelationsSeq.map { inputRuleRelation =>
+          val inputRuleRelationID: Int = inputRuleRelation.id
+          // Get all the names associated with the left and right IRs
+          val left: Int = inputRuleRelation.rightID
+          val right: Int = inputRuleRelation.leftID
+          val relatedInputRulesQuery = inputRules.filter { i =>
+            List(
+              i.id === left,
+              i.id === right
+            ).reduceLeftOption(_ || _).getOrElse(true: Rep[Boolean])
+          }
+          val relatedNamesQuery = relatedInputRulesQuery.map {_.ruleName}
+          val namesFromRelation: Seq[String] = Await.result(db.run(relatedNamesQuery.result), Duration.Inf)
+          (
+            inputRuleRelationID.toString,
+            Seq(namesFromRelation(0), namesFromRelation(1)).toString
+          )
+        }
+      }
+      inputRuleRelationOptions
     }
 
   }

@@ -1,5 +1,5 @@
 @import helper._
-@()(implicit request: RequestHeader) 
+@(inputRuleForm: Form[_], optionsSequencer: () => Seq[(String, String)])(implicit request: MessagesRequestHeader) 
 <div class="base-frame">
     <h2 class="hero-heading">
         Create a New Input Rule
@@ -21,7 +21,11 @@
 
         <label>If Aggregated, Id of Input Rule Relation to Aggregate with</label>
         <!--<input type="input" id="input-rule-irr-id" name="irrID" /> -->
-
+        @select(
+          field = inputRuleForm("irrID"),
+          options = optionsSequencer(),
+          '_default -> "Choose One"
+        )
 
         <button>Submit</button>
     }

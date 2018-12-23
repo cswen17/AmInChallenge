@@ -44,13 +44,13 @@ object Schemas extends App {
 
     // InputRules Relations
     def leftID = column[Int]("IR_FK_ID_LEFT")
-    def left = foreignKey("IR_FK_LEFT", leftID, inputRules)(_.id) 
+    def left = foreignKey("IR_FK_LEFT", leftID, inputRules)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade) 
     def rightID = column[Int]("IR_FK_ID_RIGHT")
-    def right = foreignKey("IR_FK_RIGHT", rightID, inputRules)(_.id)
+    def right = foreignKey("IR_FK_RIGHT", rightID, inputRules)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
 
     // OutputCorpus Relations
     def outputCorpusID = column[Option[Int]]("OC_FK_ID")
-    def outputCorpus = foreignKey("OC_FK", outputCorpusID, outputCorpi)(_.id)
+    def outputCorpus = foreignKey("OC_FK", outputCorpusID, outputCorpi)(_.id, onUpdate=ForeignKeyAction.Restrict, onDelete=ForeignKeyAction.Cascade)
 
     def * = (id, leftID, rightID, outputCorpusID) <> (InputRuleRelation.tupled, InputRuleRelation.unapply)
   }

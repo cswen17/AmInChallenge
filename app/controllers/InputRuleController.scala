@@ -72,8 +72,10 @@ class InputRuleController @Inject() (
     }
 
 
-    def form = Action { implicit request =>
-      Ok(views.html.forms.inputRule())
+    def form = messagesAction { implicit messagesRequest : MessagesRequest[AnyContent] =>
+
+      val util : Util = new Util(dbConfigProvider)
+      Ok(views.html.forms.inputRule(inputRuleForm, util.inputRuleRelationsToSelectOptions))
     }
 
     def create = Action { implicit request =>
